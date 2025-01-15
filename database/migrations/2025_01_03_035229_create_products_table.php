@@ -14,13 +14,14 @@ return new class extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->enum('type',['men','women','kids']);
+            $table->enum('type',['food','drink','clothe','shoes','laptop','bag','suitcase']);
             $table->string('photo');
-            $table->integer('price');
-            $table->string('rate');
-            $table->text('description');
             $table->string('color');
-            $table->enum('category',['food','drink','clothe']);
+            $table->integer('price');
+            $table->float('rate');
+            $table->text('description');
+            $table->enum('category',['men','women','kids']);
+            $table->integer('stock_quantity');
             $table->timestamps();
         });
     }
