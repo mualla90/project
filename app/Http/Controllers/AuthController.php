@@ -19,6 +19,7 @@ class AuthController extends Controller
          'userName'=>['required','max:55','string'],
          'photo'=>['required','max:55','string'],
             'phone'=>['required','max:10'],
+            'email'=>['required','email'],
             'address' =>['required','max:55','string'],
             'password'=>[
                 'required',
@@ -32,6 +33,7 @@ class AuthController extends Controller
             'password'=>bcrypt($request->password),
             'photo'=>$request->photo,
             'phone'=>$request->phone,
+            'email'=>$request->email,
             'address'=>$request->address,
             'userName'=>$request->userName,
         ]);
