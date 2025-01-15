@@ -10,7 +10,15 @@ class SearchController extends Controller
 {
     public function searchProduct(Request $request){
         $query = $request->input('query');
-        $product = Product::where('name', 'like', "%$query%") ->orWhere('category', 'like', "%$query%") ->get();
+        
+        if(empty($query)){
+            return response()->json([
+                'data'=>[],
+                'status'=>0,
+                'message'=>'No such query provided',
+            ]);
+        }
+        $product = Product::where('name', 'like', "%$query%")->orWhere('type', 'like', "%$query%") ->get();
         if($product->isNotEmpty()){
             return response()->json([
                 'data'=>$product,
@@ -29,10 +37,16 @@ class SearchController extends Controller
     public function searchStore(Request $request)
     {
         $query = $request->input('query');
-        $store = Store::where('name', 'like', "%$query%")
-                      ->orWhere('location', 'like', "%$query%")
+        if(empty($query)){
+            return response()->json([
+                'data'=>[],
+                'status'=>0,
+                'message'=>'No such query provided',
+            ]);
+        }
+        $store = Store::where('name','like',"%$query%")
+                      ->orWhere('address','like',"%$query%")
                       ->get();
-        
         if ($store->isNotEmpty()) {
             return response()->json([
                 'data' => $store,

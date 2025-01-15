@@ -18,8 +18,8 @@ class AuthController extends Controller
          'lastName'=>['required','max:55','string'],
          'userName'=>['required','max:55','string'],
          'photo'=>['required','max:55','string'],
-            'phone'=>['required','max:4000'],
-            'location' =>['required','max:55','string'],
+            'phone'=>['required','max:10'],
+            'address' =>['required','max:55','string'],
             'password'=>[
                 'required',
                 'confirmed',
@@ -32,7 +32,7 @@ class AuthController extends Controller
             'password'=>bcrypt($request->password),
             'photo'=>$request->photo,
             'phone'=>$request->phone,
-            'location'=>$request->location,
+            'address'=>$request->address,
             'userName'=>$request->userName,
         ]);
         if(!$user){
@@ -42,7 +42,7 @@ class AuthController extends Controller
             ]);
         }
             $accessToken=$user->createToken('Personal Access Token')->accessToken;
-            $user['remember_token']=$accessToken;
+            // $user['remember_token']=$accessToken;
             return response()->json([
                 'user'=>$user,
                 'access_token'=>$accessToken,

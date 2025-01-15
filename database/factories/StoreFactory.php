@@ -18,11 +18,12 @@ class StoreFactory extends Factory
     {
         return [
             'name' => $this->faker->company,
-            'location' => $this->faker->address,
+            'address' => $this->faker->address,
             'rate' => $this->faker->randomFloat(1, 1, 5),
             'theme' => $this->faker->sentence,
             'description' => $this->faker->paragraph,
-            'created_at' => now(), 'updated_at' => now(),
+            'created_at' => now(),
+            'updated_at' => now(),
         ];
     }
 }

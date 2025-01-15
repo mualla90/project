@@ -17,8 +17,9 @@ return new class extends Migration
             $table->string('lastName');
             $table->string('phone')->unique();
             $table->string('password');
-            $table->text('location');
+            $table->text('address')->default('Syria');
             $table->text('photo');
+            $table->string('email')->unique();
             $table->string('userName');
             $table->rememberToken();
             $table->timestamps();

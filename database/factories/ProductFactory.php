@@ -18,13 +18,14 @@ class ProductFactory extends Factory
     {
         return [
             'name' => $this->faker->word,
-            'type' => $this->faker->randomElement(['men', 'women', 'kids']),
+            'type' => $this->faker->randomElement(['food', 'drink','clothe','shoes','laptop','bag','suitcase']),
             'photo' => $this->faker->imageUrl,
+            'color' => $this->faker->colorName,
             'price' => $this->faker->numberBetween(10, 1000),
             'rate' => $this->faker->randomFloat(1, 1, 5),
             'description' => $this->faker->paragraph,
-            'color' => $this->faker->colorName,
-            'category' => $this->faker->randomElement(['food', 'drink', 'clothe']),
+            'stock_quantity' => $this->faker->numberBetween(1000, 10000),
+            'category' => $this->faker->randomElement(['men', 'women', 'kids']),
             'created_at' => now(),
             'updated_at' => now(),
         ];
